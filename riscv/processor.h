@@ -151,6 +151,22 @@ struct type_sew_t<64>
   using type=int64_t;
 };
 
+// =================================================
+#include <stack>
+struct ShadowStack {
+    std::stack<uint64_t> stack;
+    void push(uint64_t return_addr) {
+       stack.push(return_addr); 
+    }
+
+    uint64_t pop(void) {
+        uint64_t return_addr = stack.top();
+        stack.pop();
+       return return_addr; 
+    }
+};
+// =================================================
+
 // architectural state of a RISC-V hart
 struct state_t
 {
@@ -208,6 +224,9 @@ struct state_t
       STEP_STEPPING,
       STEP_STEPPED
   } single_step;
+
+  // my shstk
+  struct ShadowStack shstk;
 
 #ifdef RISCV_ENABLE_COMMITLOG
   commit_log_reg_t log_reg_write;
