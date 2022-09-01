@@ -14,6 +14,7 @@ if (insn.rd() == 0 && insn.rs1() == 1 && insn.i_imm() == 0) {
             "exception at [0x%x]: value popped from shstk does not match return addr\n",
             pc
         );
+        throw trap_illegal_instruction(0);
     }
 }
 WRITE_RD(tmp);

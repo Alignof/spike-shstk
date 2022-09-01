@@ -162,7 +162,7 @@ struct ShadowStack {
     uint64_t pop(void) {
         uint64_t return_addr = stack.top();
         stack.pop();
-       return return_addr; 
+        return return_addr; 
     }
 };
 // =================================================

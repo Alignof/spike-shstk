@@ -11,5 +11,6 @@ if (insn.rvc_rs1() == 1) {
             "exception at [0x%x]: value popped from shstk does not match return addr\n",
             pc
         );
+        throw trap_illegal_instruction(0);
     }
 }
